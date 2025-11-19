@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Card, Alert, Badge } from "react-bootstrap"
+import { Container, Row, Col, Card, Alert, Badge, Image } from "react-bootstrap"
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
 import { FaGithub } from "react-icons/fa";
 
 import AFTMSelect from "./components/AFTMSelect"
@@ -9,9 +12,21 @@ import { getIndicator } from "./utils/getIndicator"
 import { calcGramsPerMeter } from "./utils/calcPerMeter"
 import { calcHeadWeight } from "./utils/calcWeight"
 import { getAftmData } from "./utils/getAftmData"
+import imgQR from "./assets/qrcode.png"
+
 
 //triggar deploy
 function App() {
+
+    const [fullscreen, setFullscreen] = useState(true);
+    const [show, setShow] = useState(false);
+
+    function handleShow(breakpoint) {
+        setFullscreen(breakpoint);
+        setShow(true);
+    }
+    
+
     const [aftm, setAftm] = useState("");
     const [length, setLength] = useState(9.14);
 
@@ -50,11 +65,6 @@ function App() {
                                     <div className="mt-0 mb-3">
                                         Klumpens vikt: <strong>{weight} g</strong>
                                     </div>
-                                    
-
-                                    
-
-
 
                                     {(() => {
                                         const indicator = getIndicator(weight, aftmInfo);
@@ -68,14 +78,31 @@ function App() {
                                     })()}
                                 </>
                             )}
+                            
 
                             <div className="text-center mt-5">
                                 <a href="https://jimmiecarlsson.github.io/" target="_blank" rel="noreferrer nofollow">Kodad av <FaGithub /></a>
+                            </div>
+                            <div className="text-left mt-2">
+                                <Card.Link onClick={() => handleShow(fullscreen)}>Dela</Card.Link>
                             </div>
                         </Card.Body>
                     </Card>
                 </Col>
             </Row>
+            <Modal size="sm" show={show} onHide={() => setShow(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>AFTM</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Row>
+                        <Col>
+                            <Image src={imgQR} rounded fluid/>
+                        </Col>
+                    </Row>
+                    <a href="https://aftm-9d6548381914.herokuapp.com/" target="_blank" rel="noreferrer nofollow">https://aftm-9d6548381914.herokuapp.com/</a>
+                </Modal.Body>
+            </Modal>
         </Container>
     );
 }
