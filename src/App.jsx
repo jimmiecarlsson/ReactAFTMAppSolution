@@ -10,7 +10,7 @@ import { calcGramsPerMeter } from "./utils/calcPerMeter";
 import { calcHeadWeight } from "./utils/calcWeight"
 import { getAftmData } from "./utils/getAftmData"
 
-
+//triggar deploy
 function App() {
     const [aftm, setAftm] = useState("");
     const [length, setLength] = useState(9.14);
