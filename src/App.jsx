@@ -47,6 +47,7 @@ function App() {
                                     <Alert variant="success" className="text-center">
                                         Klumpvikt: <strong>{weight} g</strong>
                                     </Alert>
+
                                     <Alert variant="info" className="text-center">
                                         Vikt per meter: <strong>{gramsPerMeter} g/m</strong>
                                     </Alert>
