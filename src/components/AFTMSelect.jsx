@@ -12,10 +12,10 @@ function AFTMSelect({ value, onChange }) {
                 value={value}
                 onChange={(e) => onChange(Number(e.target.value))}
             >
-                <option value="">-- Välj klass --</option>
+                <option value="">-- Välj spöklass --</option>
                 {aftmClasses.map(n => (
                     <option key={n} value={n}>
-                        Klass #{n}
+                        #{n}
                     </option>
                 ))}
             </Form.Select>
