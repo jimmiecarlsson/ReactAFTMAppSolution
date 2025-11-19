@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Card, Alert, Badge } from "react-bootstrap"
+import { FaGithub } from "react-icons/fa";
 
 import AFTMSelect from "./components/AFTMSelect"
 import LengthSlider from "./components/LengthSlider"
+
 import { getIndicator } from "./utils/getIndicator"
-import { calcGramsPerMeter } from "./utils/calcPerMeter";
-
-
+import { calcGramsPerMeter } from "./utils/calcPerMeter"
 import { calcHeadWeight } from "./utils/calcWeight"
 import { getAftmData } from "./utils/getAftmData"
 
@@ -32,33 +32,35 @@ function App() {
                             <AFTMSelect value={aftm} onChange={setAftm} />
 
                             {aftmInfo && (
-                                <Alert variant="secondary">
-                                    <strong>Vikter enligt AFTM:</strong><br />
-                                    Minimum: {aftmInfo.minWeight} g<br />
-                                    Standard: {aftmInfo.stdWeight} g<br />
-                                    Maximum: {aftmInfo.maxWeight} g
-                                </Alert>
-                            )}
-
+                                <>
+                                    <Alert variant="secondary">
+                                        Vikt för klassen: {gramsPerMeter} g/m
+                                    </Alert>
+                                    <Alert variant="secondary">
+                                        <strong>Vikter enligt AFTM:</strong><br />
+                                        Minimum: {aftmInfo.minWeight} g<br />
+                                        Standard: {aftmInfo.stdWeight} g<br />
+                                        Maximum: {aftmInfo.maxWeight} g
+                                    </Alert>
+                                </>
+                            )}                            
                             <LengthSlider value={length} onChange={setLength} />
-
                             {aftm && (
                                 <>
-                                    <Alert variant="info" className="text-center">
-                                        Vikt per meter: <strong>{gramsPerMeter} g/m</strong>
-                                    </Alert>
+                                    <div className="mt-0 mb-3">
+                                        Klumpens vikt: <strong>{weight} g</strong>
+                                    </div>
+                                    
 
-                                    <Alert variant="success" className="text-center">
-                                        Klumpvikt: <strong>{weight} g</strong>
-                                    </Alert>
+                                    
 
 
 
                                     {(() => {
                                         const indicator = getIndicator(weight, aftmInfo);
                                         return (
-                                            <div className="text-center mb-3">
-                                                <Badge bg={indicator.color} pill className="px-3 py-2 fs-5">
+                                            <div className="text-center mb-3 p-4">
+                                                <Badge bg={indicator.color} pill className="px-5 py-4 fs-5">
                                                     {indicator.text}
                                                 </Badge>
                                             </div>
@@ -67,8 +69,8 @@ function App() {
                                 </>
                             )}
 
-                            <div className="text-center mt-3">
-                                <p>Kodad av</p>
+                            <div className="text-center mt-5">
+                                <a href="https://jimmiecarlsson.github.io/" target="_blank" rel="noreferrer nofollow">Kodad av <FaGithub /></a>
                             </div>
                         </Card.Body>
                     </Card>
