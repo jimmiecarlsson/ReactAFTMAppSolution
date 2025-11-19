@@ -2,7 +2,7 @@
   <Configurations>
     <BuildType Name="Debug" />
   </Configurations>
-  <Project Path="." Type="Website" DisplayName="ReactAFTMAppSolution">
+  <Project Path="." Type="Website" DisplayName="ReactAFTMAppSolution" Id="707c11f5-f08f-412f-80ea-a22992d46260">
     <Properties Name="WebsiteProperties">
       <Property Name="Debug.AspNetCompiler.Debug" Value="&quot;True&quot;" />
       <Property Name="Debug.AspNetCompiler.FixedNames" Value="&quot;false&quot;" />

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Card, Alert, Badge, Image } from "react-bootstrap"
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button'
+import Modal from 'react-bootstrap/Modal'
 
-import { FaGithub } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa"
+import { FaQrcode } from "react-icons/fa"
 
 import AFTMSelect from "./components/AFTMSelect"
 import LengthSlider from "./components/LengthSlider"
@@ -84,7 +85,7 @@ function App() {
                                 <a href="https://jimmiecarlsson.github.io/" target="_blank" rel="noreferrer nofollow">Kodad av <FaGithub /></a>
                             </div>
                             <div className="text-left mt-2">
-                                <Card.Link onClick={() => handleShow(fullscreen)}>Dela</Card.Link>
+                                <Card.Link onClick={() => handleShow(fullscreen)}><FaQrcode/></Card.Link>
                             </div>
                         </Card.Body>
                     </Card>
